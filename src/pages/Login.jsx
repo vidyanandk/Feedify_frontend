@@ -30,7 +30,10 @@ const Login = () => {
 
     setError(""); // Clear any previous errors
     try {
-      const response = await axios.post("/login", { email, password });
+      const response = await axios.post("/login", { email, password }, { 
+        withCredentials: true 
+      });
+      
       const responseData = response.data;
 
       if (responseData.error) {
