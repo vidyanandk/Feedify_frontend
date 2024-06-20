@@ -45,6 +45,7 @@ const Login = () => {
 
         // Redirect based on userType or default route
         const userType = responseData.type;
+        toast.success("user",userType);
         switch (userType) {
           case "Admin":
             navigate("/adminhome");
@@ -60,6 +61,7 @@ const Login = () => {
             break;
         }
       }
+      alert("heree")
     } catch (error) {
       console.error("Login error:", error);
       // Optionally, handle the error here
