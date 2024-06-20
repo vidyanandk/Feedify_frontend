@@ -42,18 +42,20 @@ const Login = () => {
         setData({ email: "", password: "" }); // Reset the form
         toast.success("LOGGED IN SUCCESSFULLY !!!");
         toast.success("RELOAD IF DASHBOARD NOT SHOWN");
-
+        toast.success("user",responseData);
         // Redirect based on userType or default route
         const userType = responseData.type;
         toast.success("user",userType);
+        userType=toLowerCase(userType)
         switch (userType) {
-          case "Admin":
+          case "admin":
             navigate("/adminhome");
             break;
-          case "Faculty":
+          
+          case "faculty":
             navigate("/facultyhome");
             break;
-          case "Student":
+          case "student":
             navigate("/studenthome");
             break;
           default:
