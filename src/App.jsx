@@ -21,7 +21,7 @@ import StudentForms from "./components/Student/Forms.jsx";
 import FacultyForms from "./components/Faculty/Forms.jsx";
 import AllStudents from "./pages/Admin/AllStudents.jsx";
 import AllFaculties from "./pages/Admin/AllFaculties.jsx";
-
+import PageNotFound from "./pages/PageNotFound.jsx";
 axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
 
@@ -65,6 +65,7 @@ function App() {
               <Route path="/submissions/:id" element={<StudentSubmissions />} />
             </>
           )}
+           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </div>

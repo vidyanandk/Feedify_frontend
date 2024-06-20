@@ -4,6 +4,9 @@ import { createContext, useState, useEffect } from "react";
 export const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
+
+
+  axios.defaults.baseURL = "http://localhost:8000";
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // New state variable
 
@@ -19,7 +22,8 @@ export function UserContextProvider({ children }) {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      console.log("useeffect");
+      
+      // console.log("useeffect");
       try {
         const response = await axios.get("/profile");
         console.log("pageuseContext", response.data);
