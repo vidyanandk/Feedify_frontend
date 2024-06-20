@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import { user,setUser } from "../../context/userContext";
+UserContextProvider
 const Login = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({ email: "", password: "" });
@@ -44,6 +45,8 @@ const Login = () => {
         toast.success("RELOAD IF DASHBOARD NOT SHOWN");
 
         // Redirect based on userType or default route
+
+        setUser(responseData)////here chnagesss
         const userType = responseData.type;
         // toast.success("user",userType);
         switch (userType) {
