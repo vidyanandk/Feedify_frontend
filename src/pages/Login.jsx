@@ -30,14 +30,10 @@ const Login = () => {
 
     setError(""); // Clear any previous errors
     try {
-      const response = await axios.post(
-        "/login",
-        { email, password },
-        {
-          withCredentials: true,
-        }
-      );
-
+      const response = await axios.post("/login", { email, password }, { 
+        withCredentials: true 
+      });
+      
       const responseData = response.data;
 
       if (responseData.error) {
@@ -45,21 +41,19 @@ const Login = () => {
       } else {
         setData({ email: "", password: "" }); // Reset the form
         toast.success("LOGGED IN SUCCESSFULLY !!!");
-        // toast.success("RELOAD IF DASHBOARD NOT SHOWN");
-        // toast.success("user", responseData);
-        // Redirect based on userType or default route
-        let userType = responseData.type;
-        userType = userType.toLowerCase(); // Convert userType to lowercase
-        // toast.success("user", userType);
+        toast.success("RELOAD IF DASHBOARD NOT SHOWN");
 
+        // Redirect based on userType or default route
+        const userType = responseData.type;
+        // toast.success("user",userType);
         switch (userType) {
-          case "admin":
+          case "Admin":
             navigate("/adminhome");
             break;
-          case "faculty":
+          case "Faculty":
             navigate("/facultyhome");
             break;
-          case "student":
+          case "Student":
             navigate("/studenthome");
             break;
           default:
@@ -67,7 +61,7 @@ const Login = () => {
             break;
         }
       }
-      alert("heree");
+     
     } catch (error) {
       console.error("Login error:", error);
       // Optionally, handle the error here
@@ -130,7 +124,7 @@ const Login = () => {
                 name="password"
                 onChange={handleChange}
                 value={data.password}
-                className="w-full border border-n-3 rounded-full px-4 py-2 focus:outline-none focus:border-n-4 text-n-5 text-base mb-1"
+                className="w-full border border-n-3 rounded-full px-4 py-2 focus:outline-none focus:border-n-4 text-n-5 text-base mb-1" 
                 required
               />
             </div>
