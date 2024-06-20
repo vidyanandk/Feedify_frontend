@@ -12,7 +12,7 @@ import StudentSubmissions from "../src/pages/Student/Submissions";
 import AllSubmissions from "../src/pages/Admin/Submissions";
 import Create from "../src/pages/Admin/Create";
 import Home from "../src/pages/Home";
-import { UserContext } from "../context/userContext";
+import { UserContext } from "./context/userContext.jsx";
 import AdminHome from "../src/pages/Admin/Home";
 import FacultyHome from "../src/pages/Faculty/Home";
 import StudentHome from "../src/pages/Student/Home";

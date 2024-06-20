@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import SubmissionCard from "../../components/Student/SubmissionCard";
 import axios from "axios";
-import { UserContext } from "../../../context/userContext";
+import { UserContext } from "../../context/userContext";
 
 function Submissions() {
   const [loading, setLoading] = useState(true);

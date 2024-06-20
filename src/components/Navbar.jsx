@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../context/userContext";
+import { UserContext } from "../context/userContext";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import logo from "../../public/assets/logo.png";

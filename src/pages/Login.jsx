@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { user,setUser } from "../../context/userContext";
-UserContextProvider
+import { UserContext } from "../context/userContext";
+
+
 const Login = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
-
+  axios.defaults.baseURL = "http://localhost:8000";
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
-
+  const { user, isLoading, setUser } = useContext(UserContext);
   const loginUser = async (e) => {
     e.preventDefault();
     const { email, password } = data;
@@ -35,7 +36,7 @@ const Login = () => {
         withCredentials: true 
       });
       
-      const responseData = response.data;
+      const responseData = await response.data;
 
       if (responseData.error) {
         toast.error(responseData.error);
@@ -46,7 +47,20 @@ const Login = () => {
 
         // Redirect based on userType or default route
 
-        setUser(responseData)////here chnagesss
+        
+        try {
+          const response = await axios.get("/profile");
+          console.log("pageuseContext", response.data);
+          setUser(response.data)
+          // saveUser(response.data);
+        } catch (error) {
+          console.error("Error fetching user profile:", error);
+          // removeUser();
+          // Optionally, handle the error here (e.g., set an error state)
+        }
+
+
+        
         const userType = responseData.type;
         // toast.success("user",userType);
         switch (userType) {
